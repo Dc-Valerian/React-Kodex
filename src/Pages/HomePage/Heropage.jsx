@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardProps from "../CardProps/CardProps";
 import "../CardProps/CardProps.css";
 
@@ -26,8 +26,49 @@ const Heropage = () => {
     setName(e.target.value);
   };
 
+  // const [color, setColor] = useState("red");
+
+  // const changeColor = () => {
+  //   const randomColors = `#${Math.floor(Math.random() * 16777215).toString(
+  //     16
+  //   )}`;
+
+  //   setColor(randomColors);
+  // };
+
+  const [color, setColor] = useState("pink");
+
+  const changeColor = () => {
+    const randomColors =
+      "#" + Math.floor(Math.random() * 16777215).toString(16);
+    setColor(randomColors);
+  };
+
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+  };
+
+  // useEffect(() => {
+  //   alert("Welcome to my React Website");
+  // });
+
+ const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+ useEffect(() => {
+   const timer = setInterval(() => {
+     setTime(new Date().toLocaleTimeString());
+   }, 3000);
+
+   
+   return () => clearInterval(timer);
+ }, []);
+
+
   return (
     <div>
+      <h2>Welcome to my React</h2>
       <h1>This is {text}</h1>
       <button onClick={changeText}>Change Text</button>
 
@@ -49,6 +90,49 @@ const Heropage = () => {
 
       <p>Hello {name} welcome to my react application</p>
 
+      {/* <div>
+        <div
+          style={{ height: "400px;widhth:400px", backgroundColor: color }}
+        ></div>
+        <button onClick={changeColor}>Color Change</button>
+      </div> */}
+
+      <div
+        onClick={changeColor}
+        style={{
+          backgroundColor: color,
+          width: "200px",
+          height: "300px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "black",
+          cursor: "pointer",
+        }}
+      >
+        <h1>Random Color Changer</h1>
+        Click Me to change Color
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <button
+          onClick={toggleLike}
+          style={{
+            fontSize: "40px",
+            border: "none",
+            background: "transparent",
+            cursor: "pointer",
+          }}
+        >
+          {isLiked ? "❤️" : "🤍"}
+        </button>
+        <p>{isLiked ? "You liked this!" : "Click to like!"}</p>
+      </div>
+
+      <div>
+        <h2>Current Time</h2>
+        <h3>{time}</h3>
+      </div>
       <div className="card-props-container">
         <CardProps
           h3="First Card"

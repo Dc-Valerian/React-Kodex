@@ -54,21 +54,20 @@ const Heropage = () => {
   //   alert("Welcome to my React Website");
   // });
 
- const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
 
- useEffect(() => {
-   const timer = setInterval(() => {
-     setTime(new Date().toLocaleTimeString());
-   }, 3000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 3000);
 
-   
-   return () => clearInterval(timer);
- }, []);
-
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div>
       <h2>Welcome to my React</h2>
+      <h1>MADE AN UPDATE</h1>
       <h1>This is {text}</h1>
       <button onClick={changeText}>Change Text</button>
 

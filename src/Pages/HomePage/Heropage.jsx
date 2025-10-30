@@ -12,7 +12,7 @@ const Heropage = () => {
   const [text, setText] = useState("Hello ✨👋");
 
   const changeText = () => {
-    setText("Welcome to React 🚀");
+    setText("Welcome to ygcytcccfxgx 🚀");
   };
 
   const [on, setOn] = useState(false);
@@ -22,8 +22,9 @@ const Heropage = () => {
   };
 
   const [name, setName] = useState("");
-  const handleChange = (e) => {
-    setName(e.target.value);
+
+  const handleChange = (debby) => {
+    setName(debby.target.value);
   };
 
   // const [color, setColor] = useState("red");
@@ -64,8 +65,56 @@ const Heropage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // useEffect(() => {
+  //   console.log("Hello, I just appeared");
+
+  //   return () => {
+  //     console.log("Bye bye, i am gone");
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   alert("👋 Welcome to my page!");
+
+  //   return () => {
+  //     alert("Goodbye 👋 (page removed)");
+  //   };
+  // }, []);
+
+  const [message, setMessage] = useState("Waiting.....");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage("Time Up");
+    }, 10000);
+    return () => clearTimeout(timer);
+  });
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
+
+
   return (
     <div>
+      <h1>{message}</h1>
+
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.name},{user.email}
+          </li>
+        ))}
+      </ul>
+
+      <br />
+      <br />
+      <br />
+      <br />
       <h2>Welcome to my React</h2>
       <h1>MADE AN UPDATE</h1>
       <h1>This is {text}</h1>
@@ -138,6 +187,7 @@ const Heropage = () => {
           p="woh4ufwhuiw"
           cardImages="../../../public/image.jpg"
           bgColor={"#f9c74f"}
+          buttonText="f5exytfy"
         />
 
         <CardProps
@@ -145,6 +195,7 @@ const Heropage = () => {
           p="woh4ufwhuiw"
           cardImages="https://images.pexels.com/photos/34288156/pexels-photo-34288156.jpeg"
           bgColor={"#90be6d"}
+          buttonText="gxze"
         />
         <CardProps
           h3="Third Card"

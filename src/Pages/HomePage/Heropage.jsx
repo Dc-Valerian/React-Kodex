@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardProps from "../CardProps/CardProps";
 import "../CardProps/CardProps.css";
+import ButtonProps from "../ButtonProps/ButtonProps";
+import Temperature from "../Temperature";
+import { ThemeContext } from "../ThemeContext/ThemeProvider";
 
 const Heropage = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const [counter, setCounter] = useState(0);
 
   const handleIncrement = () => {
@@ -98,9 +103,21 @@ const Heropage = () => {
       .then((data) => setUsers(data));
   }, []);
 
-
   return (
     <div>
+      <button
+        onClick={toggleTheme}
+        style={{
+          padding: "10px 20px",
+          border: "none",
+          backgroundColor: theme === "light" ? "#111" : "#fff",
+          color: theme === "light" ? "#fff" : "#111",
+          cursor: "pointer",
+          borderRadius: "8px",
+        }}
+      >
+        Toggle Theme
+      </button>
       <h1>{message}</h1>
 
       <ul>
@@ -181,6 +198,8 @@ const Heropage = () => {
         <h2>Current Time</h2>
         <h3>{time}</h3>
       </div>
+
+      <ButtonProps button="View More" />
       <div className="card-props-container">
         <CardProps
           h3="First Card"
@@ -197,6 +216,7 @@ const Heropage = () => {
           bgColor={"#90be6d"}
           buttonText="gxze"
         />
+
         <CardProps
           h3="Third Card"
           p="woh4ufwhuiw"
@@ -211,6 +231,19 @@ const Heropage = () => {
           bgColor={"#577590"}
         />
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <Temperature />
     </div>
   );
 };

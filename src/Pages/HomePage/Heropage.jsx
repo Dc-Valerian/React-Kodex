@@ -5,8 +5,8 @@ import ButtonProps from "../ButtonProps/ButtonProps";
 import Temperature from "../Temperature";
 import { ThemeContext } from "../ThemeContext/ThemeProvider";
 
-const Heropage = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const Heropage = () => {
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
   const [counter, setCounter] = useState(0);
 

@@ -6,7 +6,7 @@ import Heropage from "./Pages/HomePage/Heropage";
 import Service from "./Pages/Service/Service";
 import Error from "./Pages/ErrorPage/Error";
 import { ThemeProvider } from "./Pages/ThemeContext/ThemeProvider";
-
+import Form from "./Pages/FormPage/Form";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
           <Link to="/about">About Us</Link>
           <Link to="/service">Service</Link>
           <Link to="/contact">Contact Us</Link>
+          <Link to="/form">Form Page</Link>
         </nav>
 
         <Routes>
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
+          <Route path="/form" element={<Form />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
